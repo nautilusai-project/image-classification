@@ -9,7 +9,7 @@ if __name__ == '__main__':
     instructions = """
         Please upload an image. The image you upload will be fed
         through the Deep Neural Network in real-time
-        and the output will be displayed to the screen.
+        and the output will be displayed to the screen. This is work in progress.
         """
     
     st.write(instructions)
