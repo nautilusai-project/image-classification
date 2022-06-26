@@ -41,10 +41,11 @@ if __name__ == '__main__':
         st.image(img)
 
         st.title("Inference Result")
-        model = load_model('inference_graph/1654418118')
-        score = inference(img, model)
-        class_names = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
-        st.write("This image most likely belongs to {} with a {:.2f} percent confidence.".format(class_names[np.argmax(score)], 100 * np.max(score)))
+        with st.spinner('Wait for it...'):
+            model = load_model('inference_graph/1654418118')
+            score = inference(img, model)
+            class_names = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
+            st.write("This image most likely belongs to {} with a {:.2f} percent confidence.".format(class_names[np.argmax(score)], 100 * np.max(score)))
     else:
         pass
     
