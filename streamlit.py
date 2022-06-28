@@ -54,7 +54,7 @@ if __name__ == '__main__':
             df['class'] = class_names
             df['score'] = score
             fig = px.bar(df, x='class', y='score')
-            st.plotly_chart(fig)
+            st.plotly_chart(fig, use_container_width=True)
     else:
         pass
     
