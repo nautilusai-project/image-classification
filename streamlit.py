@@ -7,6 +7,10 @@ import tensorflow as tf
 
 import numpy as np
 
+import plotly.express as px
+
+import pandas as pd
+
 def load_model(path_to_dir):
     reloaded = tf.keras.models.load_model(path_to_dir)
     return reloaded
@@ -46,6 +50,12 @@ if __name__ == '__main__':
             score = inference(img, model)
             class_names = ['daisy', 'dandelion', 'roses', 'sunflowers', 'tulips']
             st.write("This image most likely belongs to {} with a {:.2f} percent confidence.".format(class_names[np.argmax(score)], 100 * np.max(score)))
+            df = pd.DataFrame(columns=['class', 'score'])
+            df['class'] = class_names
+            df['score'] = score
+            fig = px.bar(df, x='class', y='score')
+            #st.write(score)
+            st.plotly_chart(fig)
     else:
         pass
     
