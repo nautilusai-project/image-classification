@@ -16,10 +16,10 @@ def load_model(path_to_dir):
     return reloaded
 
 def inference(image, model):
-    img = tf.image.resize(image, [224,224])
+    img_array = tf.keras.utils.img_to_array(img)
+    img_array = tf.image.resize(img_array, [224,224])
     normalization_layer = tf.keras.layers.Rescaling(1./255)
     img_array = normalization_layer(img_array)
-    img_array = tf.keras.utils.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0) # Create a batch
 
     predictions = model.predict(img_array)
