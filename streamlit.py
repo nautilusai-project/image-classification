@@ -48,7 +48,7 @@ if __name__ == '__main__':
         with st.spinner('Wait for it...'):
             model = load_model('inference_graph/1659271978')
             score = inference(img, model)
-            class_names = ['wheel', 'no wheel']
+            class_names = ['no wheel', 'wheel']
             st.write("This image most likely belongs to {} with a {:.2f} percent confidence.".format(class_names[np.argmax(score)], 100 * np.max(score)))
             df = pd.DataFrame(columns=['class', 'score'])
             df['class'] = class_names
